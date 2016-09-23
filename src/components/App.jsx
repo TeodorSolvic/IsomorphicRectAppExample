@@ -67,4 +67,3 @@ App.propTypes = propTypes;
 App.defaultProps = defaultProps;
 
 export default App;
-
