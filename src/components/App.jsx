@@ -3,64 +3,66 @@ import React, { PropTypes, Component } from 'react';
 import './App.css';
 
 const propTypes = {
-	initialName: PropTypes.string
-}; 
+  initialName: PropTypes.string
+};
 
 const defaultProps = {
-	initialName: 'Anonym'
+  initialName: 'Аноним'
 };
 
 class App extends Component {
-	constructor(props) {
-		super(props);
+  constructor(props) {
+    super(props);
 
-		this.handleNameChange = this.handleNameChange.bind(this);
-		this.renderGreetingWidget = this.renderGreetingWidget.bind(this);
+    this.handleNameChange = this.handleNameChange.bind(this);
+    this.renderGreetingWidget = this.renderGreetingWidget.bind(this);
 
-		this.state = {
-			name: this.props.initialName,
-			touched: false,
-			greetingWidget: () => null
-		};
-	}
+    this.state = {
+      name: this.props.initialName,
+      touched: false,
+      greetingWidget: () => null
+    };
+  }
 
-	handleNameChange(val) {
-		const name = val.target.value;
+  handleNameChange(val) {
+    const name = val.target.value;
 
-		this.setState({touched:true});
+    this.setState({ touched: true });
 
-		if(name.length === 0){
-			this.setState({name: this.props.initialName});	
-		}else{
-			this.setState({name});
-		}
-	}
+    if (name.length === 0) {
+      this.setState({ name: this.props.initialName });
+    } else {
+      this.setState({ name });
+    }
+  }
 
-	renderGreetingWidget() {
-		if(!this.state.touched){
-			return null;
-		}
+  renderGreetingWidget() {
+    if (!this.state.touched) {
+      return null;
+    }
 
-		return (
-			<div>
-			  <hr />
-			  <p> Hi, {this.state.name}!</p>
-			</div>
-		);
-	}
+    return (
+      <div>
+        <hr />
+        <p>Здравствуйте, {this.state.name}!</p>
+      </div>
+    );
+  }
 
-	render() {
-		return (
-			<div className="App">
-			  <h1>Hello World!</h1>
-			  <div>
-			    <p>Enter your name</p>
-			    <div><input onChange={this.handleNameChange} /></div>
-			    {this.renderGreetingWidget()}			
-			  </div>
-			</div>
-		);
-	}
+  render() {
+    return (
+      <div className='App'>
+        <h1>Hello World!</h1>
+
+        <div>
+          <p>Введите Ваше имя:</p>
+
+          <div><input onChange={this.handleNameChange}/></div>
+          {this.renderGreetingWidget()}
+        </div>
+      </div>
+    );
+  }
 }
 
 App.propTypes = propTypes;
